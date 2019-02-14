@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+
+import SearchBoxContainer from './components/dashboard.component';
+// import OverviewContainer from './components/overview.component';
 
 class App extends Component {
   render() {
@@ -8,18 +11,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+        <div className="row">
+        <SearchBoxContainer/>
+        {/* <OverviewContainer/> */}
+                </div>
       </div>
     );
   }
