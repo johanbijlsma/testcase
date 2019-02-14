@@ -1,7 +1,5 @@
 import React from 'react';
 
-// const inputOrigin = document.querySelector('input#origin');
-// const inputDestination = document.querySelector('input#destination');
 
 const tripDetails = [];
 

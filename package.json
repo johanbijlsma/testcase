@@ -2,6 +2,7 @@
   "name": "transavia-flightsearch",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://johanbijlsma.nl/testcase",
   "dependencies": {
     "input-range-scss": "^1.5.1",
     "react": "^16.8.1",
