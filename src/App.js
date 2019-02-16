@@ -14,7 +14,6 @@ class App extends Component {
         </header>
         <div className="row">
         <SearchBoxContainer/>
-        {/* <OverviewContainer/> */}
                 </div>
       </div>
     );

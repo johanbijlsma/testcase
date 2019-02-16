@@ -1,15 +1,25 @@
 import React from 'react';
 
+// GET http://aviation-edge.com/v2/public/timetable?key=0e6848-cc5a7b&iataCode=AMS&type=departure
 
 const tripDetails = [];
-
+// const departureObject = {};
+// const AMS = 'AMS';//this.state.origin;
 class SearchBoxContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { origin: '', destination: '', departDate: undefined, returnDate: undefined, travelSize: undefined, orderOpen: false };
+        this.state = { origin: 'Amsterdam', destination: '', departDate: undefined, returnDate: undefined, travelSize: 1, orderOpen: false, apiDeparture: [] };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
+      async componentDidMount() {
+        const data = await fetch(`http://aviation-edge.com/v2/public/timetable?key=0e6848-cc5a7b&iataCode=AMS&type=departure`);
+        const jsonData = await data.json();
+        console.log(jsonData);
+        this.setState({ apiDeparture: jsonData });
+      }
+
+
     render() {
       return (
           <div>
@@ -28,7 +38,7 @@ class SearchBoxContainer extends React.Component {
             <input type="date" id="returnDate" name="returnDate" onChange={this.handleChange} value={this.state.returnDate}/>
             <label htmlFor="travelSize">What size is the travel party?</label>
             <div className="slider_container">
-            <input type="range" id="travelSize" name="travelSize" onChange={this.handleChange} min="1" max="6" step="1" default="1" value={this.state.travelSize}/>
+            <input type="range" id="travelSize" name="travelSize" onChange={this.handleChange} min="1" max="6" step="1" value={this.state.travelSize || 1}/>
             <p className="inputslider__label">{this.state.travelSize || 1} </p>
             </div>
             <button>Search</button>
@@ -45,6 +55,17 @@ class SearchBoxContainer extends React.Component {
             <li className="searchbox__check"><strong>With:</strong> {this.state.travelSize || '-'} {this.state.travelSize > 1 ? ('people') : ('person') }</li>
             </ul>
             </div>
+            <div className="searchbox__container results">
+            <ul>
+              {/* {this.state.apiDeparture[0].map(el => (
+            <li>
+              {el.name}: {el.price_usd}
+              </li>))} */}
+
+              {/* <li orderOpen={this.state.orderOpen}>{this.state.apiDeparture[0].departure || "Loading..."}</li> */}
+              {/* <li style={{ visibility: this.state.orderOpen === true ? 'visible': 'hidden'}}>{this.jsonData.children || "Loading..."}</li> */}
+              </ul>
+            </div>
         </div>
       );
     }
@@ -57,10 +78,17 @@ class SearchBoxContainer extends React.Component {
         tripDetails.push(this.state);
         console.log(tripDetails);
         this.setState({ orderOpen: true});
+        // fetch(`http://aviation-edge.com/v2/public/timetable?key=0e6848-cc5a7b&iataCode=${AMS}&type=departure`)
+        // .then(results => {
+        //   return results.json;
 
+        // })
+        // console.log(Response);
+        // this.setState({apiDepartue: departureObject})
     }
 
   }
+
 
 
 
