@@ -18,6 +18,12 @@ class SearchBoxContainer extends React.Component {
         console.log(jsonData);
         this.setState({ apiDeparture: jsonData });
       }
+      // async componentDidMount() {
+      //   const data = await fetch("http://api.travelpayouts.com/v1/prices/cheap?currency=EUR&origin=AMS&destination=HTW&page=1", {"credentials":"3d761d3634b7193e1787de76cb84ee6d","referrer":"http://localhost:3000/","referrerPolicy":"no-referrer-when-downgrade","body":null,"method":"GET","mode":"cors"});
+      //   const jsonData = await data.json();
+      //   console.log(jsonData);
+      //   this.setState({ apiDeparture: jsonData });
+      // }
 
 
     render() {
